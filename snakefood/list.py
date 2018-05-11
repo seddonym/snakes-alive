@@ -48,7 +48,7 @@ def list_imports():
             all_symnames.update(x[0] for x in
                                 find_imports(fn, opts.verbose, opts.ignores))
         for symname in sorted(all_symnames):
-            print symname
+            print(symname)
     else:
         for fn in iter_pyfiles(args, opts.ignores):
             if opts.verbose:
@@ -56,14 +56,14 @@ def list_imports():
             for symname, lineno, islocal in find_imports(fn,
                                                          opts.verbose,
                                                          opts.ignores):
-                print '%s:%d: %s' % (fn, lineno, symname)
+                print('%s:%d: %s' % (fn, lineno, symname))
                 if opts.verbose:
-                    for no in xrange(lineno-1, len(lines)):
+                    for no in range(lineno-1, len(lines)):
                         l = lines[no].rstrip()
-                        print '   %s' % l
+                        print('   %s' % l)
                         if l[-1] != '\\':
                             break
-                    print
+                    print()
                         
 
 def main():

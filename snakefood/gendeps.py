@@ -90,7 +90,7 @@ def gendeps():
     if opts.print_roots:
         inroots = find_roots(args, opts.ignores)
         for dn in sorted(inroots):
-            print dn
+            print(dn)
         return
 
     info("")
@@ -187,7 +187,7 @@ def gendeps():
     # the same roots.
     if opts.internal >= 2:
         filtfiles = type(allfiles)()
-        for from_, tolist in allfiles.iteritems():
+        for from_, tolist in allfiles.items():
             filtfiles[from_] = set(x for x in tolist if x in allfiles or x == (None, None))
         allfiles = filtfiles
 
@@ -217,9 +217,9 @@ def gendeps():
     info("Found roots:")
 
     found_roots = set()
-    for key, files in allfiles.iteritems():
+    for key, files in allfiles.items():
         found_roots.add(key[0])
-        found_roots.update(map(itemgetter(0),files))
+        found_roots.update(list(map(itemgetter(0),files)))
     if None in found_roots:
         found_roots.remove(None)
     for root in sorted(found_roots):

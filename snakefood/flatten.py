@@ -18,5 +18,5 @@ def main():
 
     depends = read_depends(sys.stdin)
     for droot, drel in flatten_depends(depends):
-        print join(droot, drel)
+        print(join(droot, drel))
 

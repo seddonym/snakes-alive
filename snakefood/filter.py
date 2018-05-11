@@ -19,10 +19,10 @@ def do_filter(populate_parser=None):
         else:
             f = open(fn)
 
-        for line in f.xreadlines():
+        for line in f:
             try:
                 yield eval(line)
-            except Exception, e:
-                print >> sys.stderr, e
+            except Exception as e:
+                print(e, file=sys.stderr)
                 raise SystemExit
 

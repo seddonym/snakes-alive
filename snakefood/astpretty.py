@@ -55,10 +55,10 @@ def main():
 
     import compiler, traceback
     for fn in args:
-        print '\n\n%s:\n' % fn
+        print('\n\n%s:\n' % fn)
         try:
             printAst(compiler.parseFile(fn), initlevel=1)
-        except SyntaxError, e:
+        except SyntaxError as e:
             traceback.print_exc()
 
 if __name__ == '__main__':
