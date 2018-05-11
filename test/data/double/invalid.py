@@ -9,7 +9,7 @@ class printtest():
     # >>> from a.b import c3
     # 
     # >>> import x.y.z1
-    print "This is a doctest"
+    print("This is a doctest")
 
 if __name__ == "__main__":                                                                                                                                                                                  
     import doctest

@@ -43,9 +43,9 @@ def run_sfood(*args, **kw):
     """
     filterdir = kw.get('filterdir', None)
     cmd = [join(bindir, args[0])] + list(args[1:])
-    print >> sys.stderr, 'Running cmd:'
-    print >> sys.stderr, ' '.join(cmd)
-    print >> sys.stderr
+    print('Running cmd:', file=sys.stderr)
+    print(' '.join(cmd), file=sys.stderr)
+    print(file=sys.stderr)
     p = Popen(cmd, shell=False, stdout=PIPE, stderr=PIPE)
     out, log = p.communicate()
     if filterdir is not None:
@@ -54,8 +54,8 @@ def run_sfood(*args, **kw):
         log = re.sub(re.escape(from_), to_, log)
 
     if p.returncode != 0:
-        print >> sys.stderr, "Program failed to run: %s" % p.returncode
-        print >> sys.stderr, ' '.join(cmd)
+        print("Program failed to run: %s" % p.returncode, file=sys.stderr)
+        print(' '.join(cmd), file=sys.stderr)
 
     return out, log
 
@@ -78,14 +78,14 @@ def compare_expect(exp_stdout, exp_stderr, *args, **kw):
         try:
             assert text == expected, ("Unexpected text: \n%s\n != \n%s\n" % (text, expected))
         except AssertionError:
-            print >> sys.stderr, "%s:" % name
-            print >> sys.stderr, "--------"
+            print("%s:" % name, file=sys.stderr)
+            print("--------", file=sys.stderr)
             sys.stderr.write(text)
-            print >> sys.stderr, "--------"
-            print >> sys.stderr
-            print >> sys.stderr, "expected:"
-            print >> sys.stderr, "--------"
+            print("--------", file=sys.stderr)
+            print(file=sys.stderr)
+            print("expected:", file=sys.stderr)
+            print("--------", file=sys.stderr)
             sys.stderr.write(expected)
-            print >> sys.stderr, "--------"
+            print("--------", file=sys.stderr)
             raise
 

@@ -20,7 +20,7 @@ def test_various():
 
     for fn in _files:
         fn = join(data, fn)
-        print 'Testing for: %s' % fn
+        print('Testing for: %s' % fn)
         compare_expect(fn.replace('.py', '.expect'), None,
                        'sfood', fn, filterdir=(data, 'ROOT'))
 
