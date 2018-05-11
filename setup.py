@@ -11,12 +11,12 @@ from distutils.core import setup
 
 
 # Install all scripts under bin.
-scripts = filter(isfile, [join('bin', x) for x in os.listdir('bin')])
+scripts = list(filter(isfile, [join('bin', x) for x in os.listdir('bin')]))
 
 def read_version():
     try:
         return open('VERSION', 'r').readline().strip()
-    except IOError, e:
+    except IOError as e:
         raise SystemExit(
             "Error: you must run setup from the root directory (%s)" % str(e))
 
